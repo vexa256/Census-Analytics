@@ -95,9 +95,9 @@
 
                         MenuItem($link = route('MgtDistricts'), $label = 'Manage Districts');
                         MenuItem($link = route('MgtCounties'), $label = 'Manage Counties');
-                        MenuItem($link = '#', $label = 'Manage Sub-Counties');
-                        MenuItem($link = '#', $label = 'Manage Parishes');
-                        MenuItem($link = '#', $label = 'Manage Villages');
+                        MenuItem($link = route('MgtSubCounties'), $label = 'Manage Sub-Counties');
+                        MenuItem($link = route('MgtParishes'), $label = 'Manage Parishes');
+                        MenuItem($link = route('MgtVillages'), $label = 'Manage Villages');
 
                         ?>
 

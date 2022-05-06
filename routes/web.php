@@ -3,7 +3,11 @@
 use App\Http\Controllers\CountiesController;
 use App\Http\Controllers\CrudController;
 use App\Http\Controllers\DistrictController;
+use App\Http\Controllers\HouseholdsController;
 use App\Http\Controllers\MainController;
+use App\Http\Controllers\ParishesController;
+use App\Http\Controllers\SubCountiesController;
+use App\Http\Controllers\VillagesController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,6 +21,31 @@ use Illuminate\Support\Facades\Route;
 |
  */
 Route::middleware(['auth'])->group(function () {
+
+    Route::controller(HouseholdsController::class)->group(function () {
+
+        Route::get('MgtHouseHolds', 'MgtHouseHolds')->name('MgtHouseHolds');
+
+        Route::post('NewHousehold', 'NewHousehold')->name('NewHousehold');
+
+    });
+
+    Route::controller(VillagesController::class)->group(function () {
+
+        Route::get('MgtVillages', 'MgtVillages')->name('MgtVillages');
+
+    });
+
+    Route::controller(ParishesController::class)->group(function () {
+
+        Route::get('MgtParishes', 'MgtParishes')->name('MgtParishes');
+
+    });
+
+    Route::controller(SubCountiesController::class)->group(function () {
+
+        Route::get('MgtSubCounties', 'MgtSubCounties')->name('MgtSubCounties');
+    });
 
     Route::controller(CountiesController::class)->group(function () {
 

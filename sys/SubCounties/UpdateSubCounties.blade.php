@@ -10,7 +10,7 @@
 
                 <input type="hidden" name="TableName" value="sub_counties">
 
-                <div class="mt-3  mb-3 col-md-6  ">
+                <div class="mt-3  mb-3 col-md-12  ">
                     <label id="label" for="" class=" required form-label">Select
                         County
                         Where the Sub-County Belongs</label>

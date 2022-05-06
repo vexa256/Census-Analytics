@@ -43,6 +43,26 @@ class CrudController extends Controller
 
             return redirect()->back()->with('status', 'The record was created successfully');
 
+        } elseif ($request->TableName == 'parishes') {
+            $validated = $request->validate([
+                '*' => 'required',
+                'ParishName' => 'required|unique:parishes',
+            ]);
+
+            $this->SaveData($request);
+
+            return redirect()->back()->with('status', 'The record was created successfully');
+
+        } elseif ($request->TableName == 'sub_counties') {
+            $validated = $request->validate([
+                '*' => 'required',
+                'SubCountyName' => 'required|unique:sub_counties',
+            ]);
+
+            $this->SaveData($request);
+
+            return redirect()->back()->with('status', 'The record was created successfully');
+
         } elseif ($request->TableName == 'counties') {
             $validated = $request->validate([
                 '*' => 'required',

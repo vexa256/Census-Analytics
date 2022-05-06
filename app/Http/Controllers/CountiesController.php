@@ -32,7 +32,7 @@ class CountiesController extends Controller
 
             "Page" => "Counties.MgtCounties",
             "Title" => "Manage all supported Counties",
-            "Desc" => "District Settings",
+            "Desc" => "County Settings",
             "Counties" => $Counties,
             "Districts" => $Districts,
             "rem" => $rem,
