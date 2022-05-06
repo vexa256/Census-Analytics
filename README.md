@@ -1,4 +1,4 @@
-A concept demonstrator for a National census analytics and reports automation web platform build using Laravel , Bootstrap5 and PHP8.1
+A concept demonstrator for a National census analytics and reports automation web platform built using Laravel , Bootstrap5 and PHP8.1
 
 
 
