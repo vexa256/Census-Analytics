@@ -18,8 +18,8 @@
             </tr>
         </thead>
         <tbody class="">
-            @isset($Villages)
-                @foreach ($Villages as $data)
+            @isset($HouseHolds)
+                @foreach ($HouseHolds as $data)
                     <tr>
                         <td>{{ $data->HouseholdName }}</td>
                         <td>{{ $data->VillageName }}</td>

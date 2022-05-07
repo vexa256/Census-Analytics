@@ -4,22 +4,22 @@
 
 <head>
     <base href="">
-    <title>Neogenesis Fertility Center | @isset($Title)
-            {{ $Title }} | @isset($Desc)
+    <title>Bwambale Jesse M |CAIS | @isset($Title)
+            {{ $Title }} |
+            @isset($Desc)
                 {{ $Desc }}
                 @endisset @endisset </title>
             <meta name="description" content="" />
             <meta name="keywords" content="" />
             <meta name="csrf-token" content="{{ csrf_token() }}">
             <meta name="viewport" content="width=device-width, initial-scale=1" />
-
             <meta property="og:locale" content="en_US" />
             <meta property="og:type" content="article" />
             <meta property="og:title" content="" />
             <meta property="og:url" content="" />
             <meta property="og:site_name" content="" />
             <link rel="canonical" href="" />
-            <link rel="shortcut icon" href="{{ asset('logos/logo.png') }}" />
+            <link rel="shortcut icon" href="{{ asset('logos/logos3.png') }}" />
 
             @auth
                 @if (Auth::user()->role == 'viewer')

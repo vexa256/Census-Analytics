@@ -7,6 +7,7 @@ use App\Http\Controllers\HouseholdsController;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\ParishesController;
 use App\Http\Controllers\SubCountiesController;
+use App\Http\Controllers\SurveyController;
 use App\Http\Controllers\VillagesController;
 use Illuminate\Support\Facades\Route;
 
@@ -21,6 +22,22 @@ use Illuminate\Support\Facades\Route;
 |
  */
 Route::middleware(['auth'])->group(function () {
+
+    Route::controller(SurveyController::class)->group(function () {
+
+        Route::any('CensusReport/{Year}', 'CensusReport')->name('CensusReport');
+
+        Route::any('AcceptYearSelect', 'AcceptYearSelect')->name('AcceptYearSelect');
+
+        Route::any('SelectYear', 'SelectYear')->name('SelectYear');
+
+        Route::any('AcceptHouseholdSelection', 'AcceptHouseholdSelection')->name('AcceptHouseholdSelection');
+
+        Route::get('SurveyHousehold/{id}', 'SurveyHousehold')->name('SurveyHousehold');
+
+        Route::get('SelectHousehold', 'SelectHousehold')->name('SelectHousehold');
+
+    });
 
     Route::controller(HouseholdsController::class)->group(function () {
 
@@ -70,6 +87,9 @@ Route::middleware(['auth'])->group(function () {
 
     Route::controller(MainController::class)->group(function () {
 
+        Route::post('UpdateAccount', 'UpdateAccount')->name('UpdateAccount');
+        Route::get('MgtUserRoles', 'MgtUserRoles')->name('MgtUserRoles');
+        Route::get('ManageAgents', 'ManageAgents')->name('ManageAgents');
         Route::get('AdminDashboard', 'AdminDashboard')->name('AdminDashboard');
         Route::get('dashboard', 'AdminDashboard');
         Route::get('/', 'AdminDashboard');

@@ -71,7 +71,9 @@
 
                         <?php
 
-                        MenuItem($link = '#', $label = 'Dashboard');
+                        MenuItem($link = '#', $label = 'Intro Note');
+
+                        // MenuItem($link = '#', $label = 'Dashboard');
 
                         ?>
 
@@ -79,32 +81,107 @@
                     </div>
                 </div>
 
+                @if (Auth::user()->role == 'admin')
+                    <div data-kt-menu-trigger="click"
+                        class="menu-item menu-accordion viewer_only">
+                        <span class="menu-link">
+                            <span class="menu-icon">
+                                <i class="fas text-light fw-bolder fa-2x me-1 fa-cogs"
+                                    aria-hidden="true"></i>
+                            </span>
+                            <span class="menu-title ms-2 fs-6">Settings</span>
+                            <span class="menu-arrow"></span>
+                        </span>
+                        <div class="menu-sub menu-sub-accordion menu-active-bg">
+
+                            <?php
+
+                            MenuItem($link = route('MgtDistricts'), $label = 'Manage Districts');
+                            MenuItem($link = route('MgtCounties'), $label = 'Manage Counties');
+                            MenuItem($link = route('MgtSubCounties'), $label = 'Manage Sub-Counties');
+                            MenuItem($link = route('MgtParishes'), $label = 'Manage Parishes');
+                            MenuItem($link = route('MgtVillages'), $label = 'Manage Villages');
+
+                            ?>
+
+
+                        </div>
+                    </div>
+                @endif
+
                 <div data-kt-menu-trigger="click"
                     class="menu-item menu-accordion viewer_only">
                     <span class="menu-link">
                         <span class="menu-icon">
-                            <i class="fas text-light fw-bolder fa-2x me-1 fa-cogs"
+                            <i class="fas text-light fw-bolder fa-2x me-1 fa-chart-line"
                                 aria-hidden="true"></i>
                         </span>
-                        <span class="menu-title ms-2 fs-6">Settings</span>
+                        <span class="menu-title ms-2 fs-6">Surveys</span>
                         <span class="menu-arrow"></span>
                     </span>
                     <div class="menu-sub menu-sub-accordion menu-active-bg">
 
                         <?php
 
-                        MenuItem($link = route('MgtDistricts'), $label = 'Manage Districts');
-                        MenuItem($link = route('MgtCounties'), $label = 'Manage Counties');
-                        MenuItem($link = route('MgtSubCounties'), $label = 'Manage Sub-Counties');
-                        MenuItem($link = route('MgtParishes'), $label = 'Manage Parishes');
-                        MenuItem($link = route('MgtVillages'), $label = 'Manage Villages');
+                        MenuItem($link = route('MgtHouseHolds'), $label = 'Households');
+
+                        MenuItem($link = route('SelectHousehold'), $label = 'Run Survey');
 
                         ?>
 
 
                     </div>
                 </div>
+                @if (Auth::user()->role == 'admin')
+                    <div data-kt-menu-trigger="click"
+                        class="menu-item menu-accordion viewer_only">
+                        <span class="menu-link">
+                            <span class="menu-icon">
+                                <i class="fas text-light fw-bolder fa-2x me-1 fa-chart-bar"
+                                    aria-hidden="true"></i>
+                            </span>
+                            <span class="menu-title ms-2 fs-6">Data
+                                Analytics</span>
+                            <span class="menu-arrow"></span>
+                        </span>
+                        <div class="menu-sub menu-sub-accordion menu-active-bg">
 
+                            <?php
+
+                            MenuItem($link = route('SelectYear'), $label = 'Census Report');
+
+                            ?>
+
+
+                        </div>
+                    </div>
+
+
+                    <div data-kt-menu-trigger="click"
+                        class="menu-item menu-accordion viewer_only">
+                        <span class="menu-link">
+                            <span class="menu-icon">
+                                <i class="fas text-light fw-bolder fa-2x me-1 fa-user-cog"
+                                    aria-hidden="true"></i>
+                            </span>
+                            <span class="menu-title ms-2 fs-6">User
+                                Authorization</span>
+                            <span class="menu-arrow"></span>
+                        </span>
+                        <div class="menu-sub menu-sub-accordion menu-active-bg">
+
+                            <?php
+
+                            MenuItem($link = route('MgtUserRoles'), $label = 'Administrators');
+
+                            MenuItem($link = route('ManageAgents'), $label = 'Field Agents');
+
+                            ?>
+
+
+                        </div>
+                    </div>
+                @endif
 
             </div>
             <!--end::Menu-->

@@ -31,56 +31,81 @@ class CrudController extends Controller
     }
 
     public function MassInsert(Request $request)
-    {
+    {if ($request->TableName == "users") {
 
-        if ($request->TableName == 'districts') {
-            $validated = $request->validate([
-                '*' => 'required',
-                'DistrictName' => 'required|unique:districts',
+        $validated = $request->validate([
+            '*' => 'required',
+            "email" => 'unique:users',
+        ]);
+
+        DB::table($request->TableName)->insert(
+            $request->except([
+                '_token',
+                'TableName',
+                'id',
+            ])
+        );
+
+        DB::table($request->TableName)->where('uuid', $request->uuid)
+            ->update([
+
+                'password' =>
+                \Hash::make($request->password),
+
             ]);
 
-            $this->SaveData($request);
+        //  $this->SaveData($request);
 
-            return redirect()->back()->with('status', 'The record was created successfully');
+        return redirect()->back()->with('status', 'The new user account has been created successfully');
 
-        } elseif ($request->TableName == 'parishes') {
-            $validated = $request->validate([
-                '*' => 'required',
-                'ParishName' => 'required|unique:parishes',
-            ]);
+    } elseif ($request->TableName == 'districts') {
+        $validated = $request->validate([
+            '*' => 'required',
+            'DistrictName' => 'required|unique:districts',
+        ]);
 
-            $this->SaveData($request);
+        $this->SaveData($request);
 
-            return redirect()->back()->with('status', 'The record was created successfully');
+        return redirect()->back()->with('status', 'The record was created successfully');
 
-        } elseif ($request->TableName == 'sub_counties') {
-            $validated = $request->validate([
-                '*' => 'required',
-                'SubCountyName' => 'required|unique:sub_counties',
-            ]);
+    } elseif ($request->TableName == 'parishes') {
+        $validated = $request->validate([
+            '*' => 'required',
+            'ParishName' => 'required|unique:parishes',
+        ]);
 
-            $this->SaveData($request);
+        $this->SaveData($request);
 
-            return redirect()->back()->with('status', 'The record was created successfully');
+        return redirect()->back()->with('status', 'The record was created successfully');
 
-        } elseif ($request->TableName == 'counties') {
-            $validated = $request->validate([
-                '*' => 'required',
-                'CountyName' => 'required|unique:counties',
-            ]);
+    } elseif ($request->TableName == 'sub_counties') {
+        $validated = $request->validate([
+            '*' => 'required',
+            'SubCountyName' => 'required|unique:sub_counties',
+        ]);
 
-            $this->SaveData($request);
+        $this->SaveData($request);
 
-            return redirect()->back()->with('status', 'The record was created successfully');
-        } else {
-            $validated = $request->validate([
-                '*' => 'required',
-            ]);
+        return redirect()->back()->with('status', 'The record was created successfully');
 
-            $this->SaveData($request);
+    } elseif ($request->TableName == 'counties') {
+        $validated = $request->validate([
+            '*' => 'required',
+            'CountyName' => 'required|unique:counties',
+        ]);
 
-            return redirect()->back()->with('status', 'The record was created successfully');
-        }
+        $this->SaveData($request);
+
+        return redirect()->back()->with('status', 'The record was created successfully');
+    } else {
+        $validated = $request->validate([
+            '*' => 'required',
+        ]);
+
+        $this->SaveData($request);
+
+        return redirect()->back()->with('status', 'The record was created successfully');
+    }
 
     }
 

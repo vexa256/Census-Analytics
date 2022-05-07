@@ -29,7 +29,6 @@
  </div>
  <!--end::Footer-->
 
-
  <div class="modal fade" id="UpdateAccountDetails">
      <div class="modal-dialog modal-dialog-scrollable modal-fullscreen">
          <div class="modal-content">
@@ -49,7 +48,8 @@
 
              <div class="modal-body ">
 
-                 <form action="#" class="row" method="POST"> @csrf
+                 <form action="{{ route('UpdateAccount') }}"
+                     class="row" method="POST"> @csrf
                      <div class="row">
 
                          <div class="mt-3  mb-3 col-md-3  ">

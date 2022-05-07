@@ -16,7 +16,7 @@
                     <select required name="VID" class="form-select  "
                         data-control="select2" data-placeholder="Select an option">
                         <option value="{{ $data->VID }}">
-                            {{ $data->ParishName }}</option>
+                            {{ $data->VillageName }}</option>
 
                         @isset($Villages)
                             @foreach ($Villages as $c)

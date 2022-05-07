@@ -84,8 +84,8 @@ $(function () {
     a.fn.extend({
         inputNumberFormat: function (c) {
             this.defaultOptions = {
-                decimal: 2,
-                decimalAuto: 2,
+                decimal: 0,
+                decimalAuto: 0,
                 separator: ".",
                 separatorAuthorized: [".", ","],
                 allowNegative: false,
